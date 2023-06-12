@@ -12,19 +12,19 @@
 <body>
   <div class="">
     <header class="display-flex justify-space-between align-center p-2">
-      <nav>
-        <a href="/">Home</a>
-        <!-- render login or logout links -->
-        {{#if logged_in}}
-        <a href="/profile">Dashboard</a>
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-      </nav>
       <h1>
         <a href="/">Tech Buzz</a>
       </h1>
+      <nav>
+        <a href="/">Home</a> | 
+        <!-- render login or logout links -->
+        {{#if logged_in}}
+        <a href="/dashboard">Dashboard</a> |
+        <button class="no-button" id="logout">logout</button>
+        {{else}}
+        <a href="/login">Login</a>
+        {{/if}}
+      </nav>
     </header>
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->

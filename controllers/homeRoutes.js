@@ -38,15 +38,15 @@ router.get('/blog/:id', async (req, res) => {
         const blog = blogData.get({ plain: true });
 
         res.render('blog', {
-            ... blog,
-            logged_in: res.session.logged_in
+            ...blog,
+            logged_in: req.session.logged_in,
         });
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
-router.get('/profile', withAuth, async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const userData = await User.findByPk(req.params.id, {
             attributes: { exclude: ['password'] },
@@ -55,8 +55,8 @@ router.get('/profile', withAuth, async (req, res) => {
 
         const user = userData.get({ plain: true });
 
-        res.render('profile', {
-            ... user,
+        res.render('dashboard', {
+            ...user,
             logged_in: true,
         });
     } catch (err) {
@@ -65,10 +65,10 @@ router.get('/profile', withAuth, async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-    if(req.session.logged_in) {
-        res.redirect('/profile');
+    if (req.session.logged_in) {
+        res.redirect('/dashboard');
         return;
-    } 
+    }
 
     res.render('login');
 });
