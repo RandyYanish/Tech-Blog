@@ -1,12 +1,12 @@
 [
     {
-        "name": "express handlebars",
-        "description": "Handlebars are a great tool for any front end developer to use. The base premise of handlebars allows you to build templates that can then later be dropped into the DOM using javascript. The light weight-ness of handlebars allows for more data to be loaded based on the amount of data that will be processed from the database, meaning less coding and less concatenating of API information!",
+        "title": "express handlebars",
+        "text": "Handlebars are a great tool for any front end developer to use. The base premise of handlebars allows you to build templates that can then later be dropped into the DOM using javascript. The light weight-ness of handlebars allows for more data to be loaded based on the amount of data that will be processed from the database, meaning less coding and less concatenating of API information!",
         "user_id": 1
     },
     {
-        "name": "Tech Blog",
-        "description": "This tech blog is an easy CMS-style blog. Use it to talk to other developers about your experiences or just as an information storing database!",
+        "title": "Tech Blog",
+        "text": "This tech blog is an easy CMS-style blog. Use it to talk to other developers about your experiences or just as an information storing database!",
         "user_id": 1
     }
 ]

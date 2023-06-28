@@ -1,44 +1,40 @@
-<div class="row">
-    <div class="col-auto">
-        <h2>Welcome, {{name}}!</h2>
+<!-- New Blog Container -->
+<div class="card-body">
+    <div class="row">
+        <div class="col">
+            <h3 class="text-center">New Blog</h3>
+            <form class="new-blog-form d-flex flex-column m-2" id="new-blog-form">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="blog-title" placeholder="Title" required>
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control" id="blog-text" rows="3" placeholder="text" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+        </div>
     </div>
 </div>
 
-<div class="row mt-4">
-    <div class="col-md-6">
-        <h3>Create a New Blog:</h3>
+<!-- Your Blog Container -->
 
-        <form class="form new-blog-form">
-            <div class="form-group">
-                <label for="blog-name">blog name:</label>
-                <input class="form-input" type="text" id="blog-name" name="blog-name" />
-            </div>
-            <div class="form-group">
-                <label for="blog-desc">description:</label>
-                <textarea class="form-input" id="blog-desc" name="blog-desc"></textarea>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Create</button>
-            </div>
-        </form>
+<div class="container">
+    <div class="card-title my-2">
+        <h4 class="text-center">Your Blogs</h4>
     </div>
-
-    {{#if blogs.length}}
-    <div class="col-md-6 blog-list">
-        <h3>Current Blogs:</h3>
-
-        {{#each blogs as |blog|}}
-        <div class="row mb-2">
-            <div class="col-md-8">
-                <h4>{{blog.name}}</h4>
-            </div>
-            <div class="col-md-4">
-                <button class="btn btn-sm btn-danger" data-id="{{blog.id}}">DELETE</button>
+    <div class="row blog-list">
+        {{#each user.Blogs}}
+        <div class="col-lg-4 col-md-6">
+            <div class="card mb-4">
+                <h2 class="card-title m-1"><strong>{{title}}</strong></h2>
+                <p class="card-text m-1"><strong>{{text}}</strong></p>
+                <div class="card-footer">
+                    <button class="delete-event-btn btn btn-danger" data-id="{{id}}">Delete Blog</button>
+                </div>
             </div>
         </div>
         {{/each}}
     </div>
-    {{/if}}
 </div>
 
 <script src="./js/dashboard.js"></script>

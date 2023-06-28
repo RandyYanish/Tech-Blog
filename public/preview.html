@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechBlog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-secondary sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="/"><strong>TechBlog</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                    </li class="nav-item">
+                    <!-- {{#if logged_in}} -->
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="/dashboard">Dashboard</a>
+                    </li>
+                    <!-- {{else}} -->
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" href="/login">Login</a>
+                    </li>
+                    <!-- {{/if}} -->
+
+                    <!-- {{#if logged_in}} -->
+                    <li class="nav-item">
+                        <button class="btn btn-toolbar text-white text-decoration-none" id="logout">Logout</button>
+                    </li>
+                    <!-- {{/if}} -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- navbar  -->
+
+    <main class="container-fluid vh-100">
+        <div class="">
+            <div class="text-center py-3">
+                <h2>Welcome, {{name}}!</h2>
+            </div>
+        </div>
+
+        <!-- New Blog Container -->
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <h3 class="text-center">New Blog</h3>
+                    <form class="new-blog-form d-flex flex-column m-2">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="blog-title" placeholder="Title" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" id="blog-text" rows="3" placeholder="text"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Your Blog Container -->
+        <div class="container">
+            <div class="card-title my-2">
+                <h4 class="text-center">Your Blogs</h4>
+            </div>
+            <div class="card mb-4">
+                <h5 class="text-center"><strong>{{title}}</strong></a></h5>
+            </div>
+            <div class="row blog-list">
+                {{#each user.Blogs}}
+                <div class="col-lg-4 col-md-6">
+                    <div class="card mb-4">
+                        <h2 class="card-title m-1"><strong>{{title}}</strong></h2>
+                        <p class="card-text m-1"><strong>{{text}}</strong></p>
+                        <div class="card-footer">
+                            <button class="delete-event-btn btn btn-danger" data-id="{{id}}">Delete Event</button>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </main>
+
+    <!-- footer  -->
+    <footer class="text-center bg-secondary-subtle text-white pt-3 fixed-bottom">
+        <div class="text-center p-2 bg-secondary text-white">
+            © 2023 TechBlog LLC
+        </div>
+    </footer>
+
+
+    <script src="./js/logout.js"></script>
+    <script src="./js/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
