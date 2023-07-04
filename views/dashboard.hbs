@@ -23,10 +23,14 @@
         <h4 class="text-center">Your Blogs</h4>
     </div>
     <div class="row blog-list">
-        {{#each user.Blogs}}
+        {{#each user.blogs}}
         <div class="col-lg-4 col-md-6">
             <div class="card mb-4">
-                <h2 class="card-title m-1"><strong>{{title}}</strong></h2>
+                <div class="row">
+                    <h2>
+                        <a href="/blog/{{id}}" class="card-title m-1 text-decoration-none text-primary">{{title}}</a>
+                    </h2>
+                </div>
                 <p class="card-text m-1"><strong>{{text}}</strong></p>
                 <div class="card-footer">
                     <button class="delete-event-btn btn btn-danger" data-id="{{id}}">Delete Blog</button>
