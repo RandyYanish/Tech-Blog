@@ -2,8 +2,11 @@
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <div class="card">
-                <div class="card-title m-1">
+                <div class="card-title m-1 d-flex justify-content-between">
                     <h1>{{title}}</h1>
+                    {{#if isAuthor}}
+                    <button class="btn btn-primary" id="edit-post" data-blog-id="{{id}}">Edit</button>
+                    {{/if}}
                 </div>
                 <div class="card-body">
                     <p>{{text}}</p>
@@ -48,4 +51,4 @@
 </div>
 {{/each}}
 
-<script src="./blog.js"></script>
+<script src="../blog.js"></script>

@@ -30,24 +30,28 @@ router.get('/blog/:id', async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['name'],
+                    attributes: ['id', 'name'],
                 },
                 {
                     model: Comment,
-                }
+                    include: [User],
+                },
             ],
         });
 
         const blog = blogData.get({ plain: true });
+        const isAuthor = req.session.user_id === blog.user.id;
 
         res.render('blog', {
             ...blog,
             logged_in: req.session.logged_in,
+            isAuthor,
         });
     } catch (err) {
         res.status(500).json(err);
     }
 });
+
 
 router.get('/dashboard', withAuth, async (req, res) => {
     try {

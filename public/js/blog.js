@@ -2,6 +2,7 @@
 const commentButton = document.getElementById('comment-button');
 const commentForm = document.getElementById('comment-form');
 const commentText = document.getElementById('comment-text');
+const editButton = document.getElementById('edit-post');
 
 // Event listener for comment button click
 commentButton.addEventListener('click', () => {
@@ -12,7 +13,9 @@ commentButton.addEventListener('click', () => {
 // Event listener for comment form submission
 commentForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    let blogId = req.params.id;
+
+    // Get the blog id from the data attribute
+    const blogId = commentButton.dataset.blogId;
 
     // Get the comment text
     const comment = commentText.value;
@@ -21,7 +24,7 @@ commentForm.addEventListener('submit', async (event) => {
         // Send the comment to the server using an AJAX request
         const response = await fetch('/api/comments', {
             method: 'POST',
-            body: JSON.stringify({ comment, blogId }), // Replace {{id}} with the actual blog id
+            body: JSON.stringify({ comment, blogId }),
             headers: { 'Content-Type': 'application/json' },
         });
 
@@ -33,6 +36,18 @@ commentForm.addEventListener('submit', async (event) => {
             // Display an error message or take appropriate action
             console.error('Failed to save comment');
         }
+    } catch (err) {
+        console.error(err);
+    }
+});
+
+// Event listener for edit button click
+editButton.addEventListener('click', async () => {
+    try {
+        const blogId = editButton.dataset.blogId;
+
+        // Redirect to the edit page for the specific blog post
+        window.location.href = `/blog/edit/${blogId}`;
     } catch (err) {
         console.error(err);
     }
